@@ -59,14 +59,14 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   Open another new terminal, edit `ROCKET_PORT` in `.env` to `8003`, then execute `cargo run`.
 
 ## Mandatory Checklists (Subscriber)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
+-   [X] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create SubscriberRequest model struct.`
-    -   [ ] Commit: `Create Notification database and Notification repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Notification repository.`
-    -   [ ] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [X] Commit: `Create Notification model struct.`
+    -   [X] Commit: `Create SubscriberRequest model struct.`
+    -   [X] Commit: `Create Notification database and Notification repository struct skeleton.`
+    -   [X] Commit: `Implement add function in Notification repository.`
+    -   [X] Commit: `Implement list_all_as_string function in Notification repository.`
+    -   [X] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -85,5 +85,7 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. In this case, RwLock<> is used because it provides flexibility for programs with many threads to read data simultaneously, but only allows one thread to write at any given time. This is highly effective because the read process in this case is more frequent than the write process. Mutex<> is not used because it only allows one thread to access a piece of data. Therefore, in this case, Mutex<> is not used because the Notifications vector will be read by many threads.
+2. In Rust, static variables differ from Java, especially regarding mutability. Static variables in Rust must be thread-safe (cannot be accessed by multiple threads simultaneously) and immutable. This is to prevent race conditions. To overcome this limitation, lazy_static is used in Rust. lazy_static allows the definition of mutable static variables safely, like Mutexed or RwLock, which manage access to these variables, thus enabling safe mutation in multithreading. Therefore, lazy_static provides a way for static variables that are "similar" to those in Java, but with safe handling according to Rust's concurrency model.
 
 #### Reflection Subscriber-2
